@@ -28,19 +28,18 @@ public class DBHelper {
 	 * @param map
 	 * @return
 	 */
-	public static <T> boolean addOne(Class<T> clazz, Map<String, String> map) {
+	public static <T> int addOne(Class<T> clazz, Map<String, String> map) {
 		if(map == null) {
-			return false;
+			return 0;
 		}
 		try {
 			T obj = buildObject(clazz, map);
 			
 			Dao<T, String> dao = DBManager.getDao(clazz);
-			dao.create(obj);
-			return true;
+			return dao.create(obj);
 		} catch(Exception e) {
 			e.printStackTrace();
-			return false;
+			return 0;
 		}
 	}
 	
@@ -120,7 +119,7 @@ public class DBHelper {
 			return dao.update(obj);
 		} catch (Exception e) {
 			e.printStackTrace();
-			return -1;
+			return 0;
 		}
 	}
 
@@ -171,7 +170,7 @@ public class DBHelper {
 			return builder.delete();
 		} catch (Exception e) {
 			e.printStackTrace();
-			return -1;
+			return 0;
 		}
 		
 	}

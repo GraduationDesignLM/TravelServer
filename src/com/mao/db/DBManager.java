@@ -11,7 +11,7 @@ import com.mao.bean.User;
 public class DBManager {
 	
 	private final static String DATABASE_URL = "jdbc:mysql://localhost/commonservice";
-	private final static String DATABASE_USERNAME = "root";
+	private final static String DATABASE_USERNAME = "travel_root";
 	private final static String DATABASE_PASSWORD = "123456";
 	private final static Class<?>[] sDBTClass = 
 			{User.class};

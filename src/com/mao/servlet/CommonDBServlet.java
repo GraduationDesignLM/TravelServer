@@ -67,6 +67,25 @@ public class CommonDBServlet extends HttpServlet {
 	 * 
 	 * 
 	 * 响应体说明：
+	 * 如果操作为添加、删除、更新则：
+	 * {
+	 * 		"status":"1",//1表示成功，0表示失败
+	 * 		"affectedRowCount":"1"//受影响的行数
+	 * }
+	 * 
+	 * 如果操作为查询，则：
+	 * [
+	 * 		{
+	 * 
+	 * 		},
+	 * 		{
+	 * 		
+	 * 		},
+	 * 		{
+	 * 
+	 * 		}
+	 * 		......
+	 * ]
 	 * 
 	 */
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -82,31 +101,33 @@ public class CommonDBServlet extends HttpServlet {
 		
 		Class<?> clazz = getClass(map);
 		int op = Integer.valueOf(map.get("op"));
-		
+		String result = "";
 		switch (op) {
 		//添加
 		case 1:
-			boolean result = DBHelper.addOne(clazz, map);
-			System.out.println(result);
+			result = "" + DBHelper.addOne(clazz, map);
 			break;
 		//删除
 		case 2:
-			int deleteRowCount = DBHelper.delete(clazz, map);
-			System.out.println("deleteRowCount:" + deleteRowCount);
+			result = "" + DBHelper.delete(clazz, map);
 			break;
 		//更新
 		case 3:
-			int updateRowCount = DBHelper.update(clazz, map);
-			System.out.println("updateRowCount:" + updateRowCount);
+			result = "" + DBHelper.update(clazz, map);
 			break;
 		//查询
 		case 4:
-			String s = DBHelper.query(clazz, map);
-			System.out.println("查询结果：" + s);
+			result = DBHelper.query(clazz, map);
 			break;
 		default:
 			break;
 		}
+		
+		
+		PrintWriter out = response.getWriter();
+		out.print(result);
+		out.flush();
+		out.close();
 	}
 
 	private Map<String, String> parseJson(String json) {
@@ -125,5 +146,9 @@ public class CommonDBServlet extends HttpServlet {
 		}
 		return null;
 	}
+	
+	
+	
+	
 	
 }
