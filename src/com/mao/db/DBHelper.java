@@ -64,7 +64,12 @@ public class DBHelper {
 		
 		Dao<T, String> dao = DBManager.getDao(clazz);
 		try {
-			List<T> list = dao.queryForFieldValues(conditions);
+			List<T> list = null;
+			if(conditions.size() > 0) {
+				list = dao.queryForFieldValues(conditions);
+			} else {
+				list = dao.queryForAll();
+			}
 			StringBuilder sb = new StringBuilder();
 			sb.append("[");
 			for(int i = 0; i < list.size(); i++) {

@@ -68,10 +68,7 @@ public class CommonDBServlet extends HttpServlet {
 	 * 
 	 * 响应体说明：
 	 * 如果操作为添加、删除、更新则：
-	 * {
-	 * 		"status":"1",//1表示成功，0表示失败
-	 * 		"affectedRowCount":"1"//受影响的行数
-	 * }
+	 * 直接返回受影响的行数
 	 * 
 	 * 如果操作为查询，则：
 	 * [
@@ -123,6 +120,7 @@ public class CommonDBServlet extends HttpServlet {
 			break;
 		}
 		
+		System.out.println("result:" + result);
 		
 		PrintWriter out = response.getWriter();
 		out.print(result);
