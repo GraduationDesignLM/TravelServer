@@ -1,4 +1,4 @@
-package com.mao.manager;
+package com.mao.file;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -15,10 +15,10 @@ public class FileManager {
 	 * 
 	 * @return
 	 */
-	public static String getPicturesPath(HttpServletRequest request) {
+	public static String getCommonDirPath(HttpServletRequest request) {
 		if(request == null) {
 			return null;
 		}
-		return request.getSession().getServletContext().getRealPath("/Pictures/");
+		return request.getSession().getServletContext().getRealPath("/files/");
 	}
 }

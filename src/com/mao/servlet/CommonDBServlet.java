@@ -42,11 +42,6 @@ public class CommonDBServlet extends HttpServlet {
 		out.println("</HTML>");
 		out.flush();
 		out.close();
-		
-		
-		
-		//测试
-		doPost(request, response);
 	}
 
 	/**
