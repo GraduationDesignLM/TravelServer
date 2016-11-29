@@ -107,7 +107,6 @@ public class FileHelper {
 	
 	private static String generateFilename() {
 		Random random = new Random();
-		
 		String raw = "" + random.nextInt(Integer.MAX_VALUE) + System.currentTimeMillis() / 10000 + random.nextInt(Integer.MAX_VALUE);
 		raw += Thread.currentThread().getId();
 		return raw;
