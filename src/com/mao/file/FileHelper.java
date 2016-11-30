@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -49,6 +50,7 @@ public class FileHelper {
            
            //4、使用ServletFileUpload解析器解析上传数据，解析结果返回的是一个List<FileItem>集合，每一个FileItem对应一个Form表单的输入项
             List<FileItem> list = upload.parseRequest(request);
+            List<String> paths = new ArrayList<String>();
             for(FileItem item : list){
                 //如果fileitem中封装的是普通输入项的数据
                 if(item.isFormField()){
@@ -89,10 +91,19 @@ public class FileHelper {
                     os.close();
                    //删除处理文件上传时生成的临时文件
                    item.delete();
-                   out.println(local2NetworkUrl(path));
-                   return;
+                   paths.add(path);
               }
             }
+            
+            int i = 0;
+            for(String s : paths) {
+            	if(i > 0) {
+            		out.print("#");
+            	}
+            	out.print(local2NetworkUrl(s));
+            	i = 1;
+            }
+            
         } catch (Exception e) {
             e.printStackTrace();
             if(out != null) {
