@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
+import com.mao.bean.TravelNote;
 import com.mao.bean.User;
 import com.mao.db.DBHelper;
 import com.mao.utils.TextUtils;
@@ -136,7 +137,9 @@ public class CommonDBServlet extends HttpServlet {
 		String table = map.get("table");
 		if(TextUtils.equalsIgnoreCase(table, "User")) {
 			return User.class;
-		}
+		} else if(TextUtils.equalsIgnoreCase(table, "TravelNote")) {
+			return TravelNote.class;
+		} 
 		return null;
 	}
 	

@@ -6,6 +6,7 @@ import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.dao.DaoManager;
 import com.j256.ormlite.jdbc.JdbcConnectionSource;
 import com.j256.ormlite.table.TableUtils;
+import com.mao.bean.TravelNote;
 import com.mao.bean.User;
 
 public class DBManager {
@@ -14,7 +15,7 @@ public class DBManager {
 	private final static String DATABASE_USERNAME = "travel_root";
 	private final static String DATABASE_PASSWORD = "123456";
 	private final static Class<?>[] sDBTClass = 
-			{User.class};
+			{User.class,TravelNote.class};
 	
 	
 	private static JdbcConnectionSource connectionSource;
@@ -26,7 +27,7 @@ public class DBManager {
 			connectionSource.setUsername(DATABASE_USERNAME);
 			connectionSource.setPassword(DATABASE_PASSWORD);
 			
-			//自动建表
+			//������������������������������������
 			try {
 				if(sDBTClass != null) {
 					for(Class<?> clazz : sDBTClass) {
@@ -45,7 +46,7 @@ public class DBManager {
 	
 	public static <T> Dao<T, String> getDao(Class<?> clazz) {
 		try {
-			return DaoManager.createDao(connectionSource, clazz);
+			return (Dao<T, String>) DaoManager.createDao(connectionSource, clazz);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;

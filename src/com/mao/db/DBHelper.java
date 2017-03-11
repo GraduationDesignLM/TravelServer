@@ -136,6 +136,7 @@ public class DBHelper {
 			T obj = clazz.newInstance();
 			Field[] fields = clazz.getDeclaredFields();
 			for(Field f : fields) {
+				f.setAccessible(true);
 				String name = f.getName();
 				String value = map.get(name);
 				if(!TextUtils.isEmpty(value)) {
