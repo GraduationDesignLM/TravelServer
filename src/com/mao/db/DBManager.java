@@ -20,6 +20,12 @@ public class DBManager {
 	
 	private static JdbcConnectionSource connectionSource;
 	
+	/**
+	 * 进行初始化，触发static代码执行
+	 * 
+	 */
+	public static void init(){}
+	
 	static {
 		try {
 			connectionSource =
@@ -27,17 +33,17 @@ public class DBManager {
 			connectionSource.setUsername(DATABASE_USERNAME);
 			connectionSource.setPassword(DATABASE_PASSWORD);
 			
-			//������������������������������������
-			try {
-				if(sDBTClass != null) {
-					for(Class<?> clazz : sDBTClass) {
-						TableUtils.createTableIfNotExists(connectionSource, clazz);
+			if(sDBTClass != null) {
+				for(Class<?> clazz : sDBTClass) {
+					try {
+						if(clazz != null) {
+							TableUtils.createTableIfNotExists(connectionSource, clazz);
+						}
+					} catch (Exception e) {
+						e.printStackTrace();
 					}
 				}
-			} catch (SQLException e) {
-				e.printStackTrace();
 			}
-			
 			
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -17,6 +17,7 @@ import com.google.gson.reflect.TypeToken;
 import com.mao.bean.TravelNote;
 import com.mao.bean.User;
 import com.mao.db.DBHelper;
+import com.mao.db.DBManager;
 import com.mao.utils.TextUtils;
 
 /**
@@ -29,6 +30,12 @@ import com.mao.utils.TextUtils;
  */
 public class CommonDBServlet extends HttpServlet {
 
+	@Override
+	public void init() throws ServletException {
+		super.init();
+		DBManager.init();
+	}
+	
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
