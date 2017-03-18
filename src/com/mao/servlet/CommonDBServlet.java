@@ -124,6 +124,7 @@ public class CommonDBServlet extends HttpServlet {
 		
 		System.out.println("result:" + result);
 		
+		response.setCharacterEncoding("UTF-8");
 		PrintWriter out = response.getWriter();
 		out.print(result);
 		out.flush();
