@@ -83,8 +83,7 @@ public class CommonDBServlet extends HttpServlet {
 	 */
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
-		String json = request.getParameter("json");
+		String json = new String(request.getParameter("json").getBytes("iso-8859-1"), "utf-8");  
 		Map<String, String> map = parseJson(json);
 		
 		Set<Entry<String, String>> entrys = map.entrySet();

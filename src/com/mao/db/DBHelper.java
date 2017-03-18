@@ -143,8 +143,12 @@ public class DBHelper {
 					Class<?> type = f.getType();
 					if(type == Integer.class || type == int.class) {
 						f.set(obj, Integer.valueOf(value));
-					} else {
+					}else if(type == Double.class || type == double.class){
+						f.set(obj,Double.valueOf(value));
+					}else {
 						f.set(obj, value);
+						Object o = f.get(obj);
+						System.out.print(o);
 					}
 				}
 			}
