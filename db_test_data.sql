@@ -20,3 +20,7 @@ insert into user (username, password, phone) values ("¾£éð", "e1adc3949ba59abbe5
 insert into user (username, password, phone) values ("°²ç÷À­", "e1adc3949ba59abbe56e057f2f883e", "15603001237");
 
 insert into user (username, password, phone) values ("ºóÒá", "e1adc3949ba59abbe56e057f2f883e", "15603001238");
+
+insert into user (username, password, phone) values ("qq", "e1adc3949ba59abbe56e057f2f883e", "15603001239");
+
+insert into user (username, password, phone) values ("pp", "e1adc3949ba59abbe56e057f2f883e", "15603001240");
