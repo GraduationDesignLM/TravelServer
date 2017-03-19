@@ -24,3 +24,5 @@ insert into user (username, password, phone) values ("Кѓвс", "e1adc3949ba59abbe5
 insert into user (username, password, phone) values ("qq", "e1adc3949ba59abbe56e057f2f883e", "15603001239");
 
 insert into user (username, password, phone) values ("pp", "e1adc3949ba59abbe56e057f2f883e", "15603001240");
+
+insert into user (username, password, phone) values ("mcb", "e1adc3949ba59abbe56e057f2f883e", "15603005716");
