@@ -2,7 +2,6 @@ package com.mao.bean;
 
 import com.j256.ormlite.field.DatabaseField;
 
-//测试类
 public class User {
 
 	@DatabaseField(generatedId = true)
@@ -13,4 +12,7 @@ public class User {
 	
 	@DatabaseField
 	public String password;
+	
+	@DatabaseField
+	public String phone;
 }
