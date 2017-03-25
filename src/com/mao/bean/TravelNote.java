@@ -14,7 +14,10 @@ public class TravelNote {
     @DatabaseField
     private String text;
     @DatabaseField(dataType = DataType.BYTE_ARRAY)
+    private byte[] pictureUrlsByte;//必须为byte数组
+    
     private String pictureUrls;
+    
     @DatabaseField
     private String location;
     @DatabaseField
@@ -72,16 +75,38 @@ public class TravelNote {
     public void setText(String text) {
         this.text = text;
     }
+    
+    
 
-    public String getPictureUrls() {
-        return pictureUrls;
-    }
+	public byte[] getPictureUrlsByte() {
+		return pictureUrlsByte;
+	}
 
-    public void setPictureUrls(String pictureUrls) {
-        this.pictureUrls = pictureUrls;
-    }
+	public void setPictureUrlsByte(byte[] pictureUrlsByte) {
+		this.pictureUrlsByte = pictureUrlsByte;
+	}
 
-    public String getLocation() {
+	public String getPictureUrls() {
+		try {
+			return new String(pictureUrlsByte, "UTF-8");
+		} catch (Exception e) {
+		}
+		return null;
+		
+	}
+
+	public void setPictureUrls(String pictureUrls) {
+		this.pictureUrls = pictureUrls;
+		if(pictureUrls != null) {
+			try {
+				setPictureUrlsByte(pictureUrls.getBytes("UTF-8"));
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
+
+	public String getLocation() {
         return location;
     }
 

@@ -1,6 +1,7 @@
 package com.mao.db;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -10,7 +11,9 @@ import java.util.Set;
 
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.stmt.DeleteBuilder;
+import com.j256.ormlite.stmt.QueryBuilder;
 import com.j256.ormlite.stmt.Where;
+import com.mao.bean.TravelNote;
 import com.mao.utils.TextUtils;
 
 /**
@@ -61,15 +64,37 @@ public class DBHelper {
 				conditions.put(name, value);
 			}
 		}
-		
 		Dao<T, String> dao = DBManager.getDao(clazz);
+		long offset = -1;
+		long limit = -1;
 		try {
-			List<T> list = null;
-			if(conditions.size() > 0) {
-				list = dao.queryForFieldValues(conditions);
-			} else {
-				list = dao.queryForAll();
+			offset = Long.parseLong(map.get("offset"));
+			limit = Long.parseLong(map.get("limit"));
+		} catch (Exception e) {
+			offset = -1;
+			limit = -1;
+		}
+		try {
+			QueryBuilder<T, String> builder = dao.queryBuilder();
+			if(offset != -1 && limit != -1) {
+				builder.offset(offset);
+				builder.limit(limit);
 			}
+			if(conditions.size() > 0) {
+				Where<T, String> where = builder.where();
+				Set<Entry<String, Object>> entrys = conditions.entrySet();
+				int i = 0;
+				int size = entrys.size();
+				for(Entry<String, Object> e : entrys) {
+					where.eq(e.getKey(), e.getValue());
+					if(i < size - 1) {
+						where.and();
+					}
+					i++;
+				}
+				builder.setWhere(where);
+			}
+			List<T> list = builder.query();
 			StringBuilder sb = new StringBuilder();
 			sb.append("[");
 			for(int i = 0; i < list.size(); i++) {
@@ -78,6 +103,7 @@ public class DBHelper {
 				}
 				sb.append("{");
 				for(int j = 0; j < fields.length; j++) {
+					fields[j].setAccessible(true);
 					String name = fields[j].getName();
 					Object obj = fields[j].get(list.get(i));
 					String value = null;
@@ -87,6 +113,12 @@ public class DBHelper {
 						value = obj + "";
 					} else {
 						value = (String) obj;
+					}
+					//特殊处理
+					if(clazz == TravelNote.class && "pictureUrls".equals(name)) {
+						Method method = clazz.getDeclaredMethod("getPictureUrls");
+						method.setAccessible(true);
+						value = (String) method.invoke(list.get(i));
 					}
 				    if(j > 0) {
 				    	sb.append(",");
