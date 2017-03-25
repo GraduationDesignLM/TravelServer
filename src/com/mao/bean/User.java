@@ -15,4 +15,7 @@ public class User {
 	
 	@DatabaseField
 	public String phone;
+	
+	@DatabaseField
+	public String picture;
 }

@@ -11,21 +11,21 @@
 truncate table User;
 
 #再插入数据
-insert into user (username, password, phone) values ("诸葛亮", "e1adc3949ba59abbe56e057f2f883e", "15603001234");
+insert into user (username, password, phone, picture) values ("诸葛亮", "e1adc3949ba59abbe56e057f2f883e", "15603001234", "http://imgsrc.baidu.com/forum/w%3D580/sign=970e3d7eb1119313c743ffb855390c10/3418d21b0ef41bd569231b4852da81cb39db3d24.jpg");
 
-insert into user (username, password, phone) values ("李白666", "e1adc3949ba59abbe56e057f2f883e", "15603001235");
+insert into user (username, password, phone, picture) values ("李白666", "e1adc3949ba59abbe56e057f2f883e", "15603001235", "http://imgsrc.baidu.com/forum/w%3D580/sign=970e3d7eb1119313c743ffb855390c10/3418d21b0ef41bd569231b4852da81cb39db3d24.jpg");
 
-insert into user (username, password, phone) values ("荆轲", "e1adc3949ba59abbe56e057f2f883e", "15603001236");
+insert into user (username, password, phone, picture) values ("荆轲", "e1adc3949ba59abbe56e057f2f883e", "15603001236", "http://imgsrc.baidu.com/forum/w%3D580/sign=970e3d7eb1119313c743ffb855390c10/3418d21b0ef41bd569231b4852da81cb39db3d24.jpg");
 
-insert into user (username, password, phone) values ("安琪拉", "e1adc3949ba59abbe56e057f2f883e", "15603001237");
+insert into user (username, password, phone, picture) values ("安琪拉", "e1adc3949ba59abbe56e057f2f883e", "15603001237", "http://imgsrc.baidu.com/forum/w%3D580/sign=970e3d7eb1119313c743ffb855390c10/3418d21b0ef41bd569231b4852da81cb39db3d24.jpg");
 
-insert into user (username, password, phone) values ("后裔", "e1adc3949ba59abbe56e057f2f883e", "15603001238");
+insert into user (username, password, phone, picture) values ("后裔", "e1adc3949ba59abbe56e057f2f883e", "15603001238", "http://imgsrc.baidu.com/forum/w%3D580/sign=970e3d7eb1119313c743ffb855390c10/3418d21b0ef41bd569231b4852da81cb39db3d24.jpg");
 
-insert into user (username, password, phone) values ("qq", "e1adc3949ba59abbe56e057f2f883e", "15603001239");
+insert into user (username, password, phone, picture) values ("qq", "e1adc3949ba59abbe56e057f2f883e", "15603001239", "http://imgsrc.baidu.com/forum/w%3D580/sign=970e3d7eb1119313c743ffb855390c10/3418d21b0ef41bd569231b4852da81cb39db3d24.jpg");
 
-insert into user (username, password, phone) values ("pp", "e1adc3949ba59abbe56e057f2f883e", "15603001240");
+insert into user (username, password, phone, picture) values ("pp", "e1adc3949ba59abbe56e057f2f883e", "15603001240", "http://imgsrc.baidu.com/forum/w%3D580/sign=970e3d7eb1119313c743ffb855390c10/3418d21b0ef41bd569231b4852da81cb39db3d24.jpg");
 
-insert into user (username, password, phone) values ("mcb", "e1adc3949ba59abbe56e057f2f883e", "15603005716");
+insert into user (username, password, phone, picture) values ("mcb", "e1adc3949ba59abbe56e057f2f883e", "15603005716", "http://imgsrc.baidu.com/forum/w%3D580/sign=970e3d7eb1119313c743ffb855390c10/3418d21b0ef41bd569231b4852da81cb39db3d24.jpg");
 
 
 
@@ -40,7 +40,7 @@ truncate table travelnote;
 
 #再插入数据
 insert into travelnote (text, pictureUrlsByte, location, userId, publish_time, latitude, longitude) values 
-	("今天天气不错", "http://g.hiphotos.baidu.com/zhidao/pic/item/ac345982b2b7d0a2bafa82f5ccef76094b369aa3.jpg", "天河区", 1, "2017-3-24 15:30", 23, 115);
+	("今天天气不错", "http://g.hiphotos.baidu.com/zhidao/pic/item/ac345982b2b7d0a2bafa82f5ccef76094b369aa3.jpg##http://imgsrc.baidu.com/forum/w%3D580/sign=4b5f527fe8c4b7453494b71efffc1e78/27558eb1cb13495448293c32554e9258d1094a3f.jpg", "天河区", 1, "2017-3-24 15:30", 23, 115);
 
 insert into travelnote (text, pictureUrlsByte, location, userId, publish_time, latitude, longitude) values 
 	("今天天气一般", "http://img5.imgtn.bdimg.com/it/u=78774946,2151458707&fm=206&gp=0.jpg", "西湖", 1, "2017-3-24 15:30", 23, 115);
